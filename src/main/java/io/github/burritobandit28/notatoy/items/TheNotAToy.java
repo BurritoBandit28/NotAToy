@@ -13,7 +13,6 @@ public class TheNotAToy extends Item {
         super(settings);
     }
 
-
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
         return super.use(world,user,hand);
     }

@@ -1,14 +1,15 @@
 {
-	"required": true,
-	"package": "io.github.burritobandit28.notatoy.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"NoteBlockInstrumentMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
+  "required": true,
+  "package": "io.github.burritobandit28.notatoy.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "LivingEntityMixin",
+    "NoteBlockInstrumentMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
 	}
 }
