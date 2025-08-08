@@ -52,7 +52,7 @@ public class BlockRegister {
     }
 
 
-    public static final Block POLONIUM210 = register("polonium210", PoloniumBlock::new,
+    public static final Block POLONIUM210 = register("polonium210", RadioactiveBlock::new,
             AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).instrument(NoteBlockInstrument.valueOf("HEV")).ticksRandomly(), true);
 
 

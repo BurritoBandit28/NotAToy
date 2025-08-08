@@ -1,7 +1,7 @@
 package io.github.burritobandit28.notatoy.mixin;
 
-import io.github.burritobandit28.notatoy.accessors.RadioactiveIdentifier;
 import io.github.burritobandit28.notatoy.accessors.isSourcePresentAccessor;
+import io.github.burritobandit28.notatoy.blocks.RadioactiveBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -51,7 +51,7 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
         if (!this.getWorld().isClient) {
             for (Pair<BlockPos, Integer> blockSource : this.blockSources) {
                 if (blockSource.getRight() > 1200) {
-                    if ((!blockSource.getLeft().isWithinDistance(this.getPos(), 100.0))&&this.getWorld().getBlockState(blockSource.getLeft()).getBlock() instanceof RadioactiveIdentifier) {
+                    if ((!blockSource.getLeft().isWithinDistance(this.getPos(), 100.0))&&this.getWorld().getBlockState(blockSource.getLeft()).getBlock() instanceof RadioactiveBlock) {
                         this.blockSources.remove(blockSource);
                     }
                 } else {
@@ -93,7 +93,6 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
     @Override
     public void addBlockSource(BlockPos sourcePos) {
         if (!(this.blockSources.contains(sourcePos))) {
-            System.out.printf("Source added for %s", this.getDisplayName().toString());
             this.blockSources.add(new Pair<>(sourcePos, 0));
         }
     }
