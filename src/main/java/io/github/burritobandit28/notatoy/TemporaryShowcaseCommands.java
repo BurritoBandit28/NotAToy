@@ -9,11 +9,17 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.text.Text;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 import static net.minecraft.server.command.CommandManager.argument;
 import static net.minecraft.server.command.CommandManager.literal;
 
 public class TemporaryShowcaseCommands {
 
+
+
+    public static HashMap<UUID, Boolean> radiation_opt_in = new HashMap<>();
 
 
     public static void regCommands() {
@@ -28,7 +34,8 @@ public class TemporaryShowcaseCommands {
 
                                     Boolean val = BoolArgumentType.getBool(ctx, "value");
 
-                                    ((EnableDisableRadiation)livingEntity).set_value(val);
+                                    radiation_opt_in.put(livingEntity.getUuid(), val);
+                                    // ((EnableDisableRadiation)livingEntity).set_value(val); - old way, no persistence after death
 
                                     ctx.getSource().sendFeedback(() -> Text.literal(String.format("Set radiation opt in to %s", val)), false);
 

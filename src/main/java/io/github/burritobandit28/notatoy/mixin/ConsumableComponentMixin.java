@@ -1,6 +1,7 @@
 package io.github.burritobandit28.notatoy.mixin;
 
 import io.github.burritobandit28.notatoy.items.ItemRegister;
+import io.github.burritobandit28.notatoy.items.RadioactiveFunGoop;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.type.ConsumableComponent;
 import net.minecraft.entity.Entity;
@@ -35,7 +36,7 @@ public class ConsumableComponentMixin {
         if (stack.getItem() == ItemRegister.RADIOACTIVE_FUN_GOOP   && !world.isClient ) {
 
             if (!user.isInCreativeMode()) {
-                user.damage((ServerWorld) world, user.getDamageSources().create(DamageTypes.EXPLOSION), Float.MAX_VALUE);
+                user.damage((ServerWorld) world, RadioactiveFunGoop.getGoopDamageSource((ServerWorld) world), Float.MAX_VALUE);
             }
 
             world.createExplosion(user, Explosion.createDamageSource(world, user), GOOP_BEHAVIOUR, user.getPos(), 10.0F, false, World.ExplosionSourceType.MOB);

@@ -1,5 +1,6 @@
 package io.github.burritobandit28.notatoy.mixin;
 
+import io.github.burritobandit28.notatoy.TemporaryShowcaseCommands;
 import io.github.burritobandit28.notatoy.accessors.EnableDisableRadiation;
 import io.github.burritobandit28.notatoy.accessors.isSourcePresentAccessor;
 import io.github.burritobandit28.notatoy.blocks.RadioactiveBlock;
@@ -53,7 +54,7 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
     @Inject(at = @At("TAIL"), method = "baseTick")
     private void doRadiation(CallbackInfo ci) {
 
-        if (this.doRadiation || !this.isPlayer()) {
+        if (TemporaryShowcaseCommands.radiation_opt_in.getOrDefault(this.getUuid(), false) || !this.isPlayer()) {
             this.tickSources();
 
 
