@@ -6,6 +6,7 @@ import io.github.burritobandit28.notatoy.items.ItemRegister;
 import io.github.burritobandit28.notatoy.sounds.ModSounds;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -26,5 +27,6 @@ public class NotAToy implements ModInitializer {
 		ItemRegister.init();
 		BlockRegister.init();
         RadiationSicknessEffect.reg();
+        TemporaryShowcaseCommands.regCommands();
 	}
 }

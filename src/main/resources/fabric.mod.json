@@ -3,15 +3,15 @@
 	"id": "notatoy",
 	"version": "${version}",
 	"name": "Not a Toy",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Adds things that are DEFINITELY not toys.",
 	"authors": [
-		"Me!"
+		"BurritoBandit28"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://burritobandit28.github.io/",
+		"sources": "https://github.com/BurritoBandit28/NotAToy"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/notatoy/icon.png",
 	"environment": "*",
 	"entrypoints": {

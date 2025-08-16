@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "notatoy:block/polonium_top",
+    "down": "notatoy:block/polonium_bottom",
+    "north": "notatoy:block/polonium_side",
+    "south": "notatoy:block/polonium_side",
+    "east": "notatoy:block/polonium_side",
+    "west": "notatoy:block/polonium_side",
+    "particle" : "notatoy:block/polonium_side"
+  }
+}

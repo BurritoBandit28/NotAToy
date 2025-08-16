@@ -11,6 +11,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
@@ -52,8 +53,8 @@ public class BlockRegister {
     }
 
 
-    public static final Block POLONIUM210 = register("polonium210", RadioactiveBlock::new,
-            AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).instrument(NoteBlockInstrument.valueOf("HEV")).ticksRandomly(), true);
+    public static final Block WASTEBLOCK = register("waste", WasteBlock::new,
+            AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).instrument(NoteBlockInstrument.valueOf("HEV")).ticksRandomly().sounds(BlockSoundGroup.COPPER), true);
 
 
     public static void init() {
