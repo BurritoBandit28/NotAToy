@@ -53,7 +53,7 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
     @Inject(at = @At("TAIL"), method = "baseTick")
     private void doRadiation(CallbackInfo ci) {
 
-        if (!this.isInCreativeMode() || this.doRadiation ) {
+        if (this.doRadiation || !this.isPlayer()) {
             this.tickSources();
 
 
