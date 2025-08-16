@@ -16,9 +16,15 @@ public class WasteBlock extends RadioactiveBlock{
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
 
-        player.giveItemStack(ItemRegister.RADIOACTIVE_FUN_GOOP.getDefaultStack());
+        if (player.isSneaking()) {
 
-        return ActionResult.SUCCESS;
+            player.giveItemStack(ItemRegister.RADIOACTIVE_FUN_GOOP.getDefaultStack());
+
+            return ActionResult.SUCCESS;
+        }
+        else {
+            return ActionResult.PASS;
+        }
     }
 
 }
