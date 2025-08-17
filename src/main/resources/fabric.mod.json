@@ -20,7 +20,10 @@
 		],
 		"mm:early_risers": [
 			"io.github.burritobandit28.notatoy.fabasm.EarlyRiser"
-		]
+		],
+        "client" : [
+          "io.github.burritobandit28.notatoy.NotAClient"
+        ]
 	},
 	"mixins": [
 		"notatoy.mixins.json"
