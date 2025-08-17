@@ -32,7 +32,6 @@ public class ConsumableComponentMixin {
     @Inject(at = @At("HEAD"), method = "finishConsumption")
     private void blowUpIdiot(World world, LivingEntity user, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
 
-        System.out.println(stack);
         if (stack.getItem() == ItemRegister.RADIOACTIVE_FUN_GOOP   && !world.isClient ) {
 
             if (!user.isInCreativeMode()) {

@@ -3,6 +3,7 @@ package io.github.burritobandit28.notatoy;
 import io.github.burritobandit28.notatoy.blocks.BlockRegister;
 import io.github.burritobandit28.notatoy.effects.RadiationSicknessEffect;
 import io.github.burritobandit28.notatoy.items.ItemRegister;
+import io.github.burritobandit28.notatoy.items.ModItemGroup;
 import io.github.burritobandit28.notatoy.sounds.ModSounds;
 import net.fabricmc.api.ModInitializer;
 
@@ -26,6 +27,7 @@ public class NotAToy implements ModInitializer {
 		ModSounds.init();
 		ItemRegister.init();
 		BlockRegister.init();
+        ModItemGroup.init();
         RadiationSicknessEffect.reg();
         TemporaryShowcaseCommands.regCommands();
 	}

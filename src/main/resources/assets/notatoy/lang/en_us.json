@@ -3,6 +3,8 @@
   "death.attack.radiation_damage": "%1$s became too irradiated",
   "death.attack.ate_goop": "%1$s ate some Radioactive Fun Goop",
   "item.notatoy.radioactive_fun_goop" : "Radioactive Fun Goop",
-  "block.notatoy.waste" : "Waste"
+  "block.notatoy.waste" : "Waste",
+  "item.notatoy.waste" : "Waste",
+  "itemGroup.notatoy" : "Not A Toy"
 
 }
