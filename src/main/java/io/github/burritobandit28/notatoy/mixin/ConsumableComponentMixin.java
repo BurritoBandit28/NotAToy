@@ -1,18 +1,24 @@
 package io.github.burritobandit28.notatoy.mixin;
 
+import io.github.burritobandit28.notatoy.NotAToy;
 import io.github.burritobandit28.notatoy.items.ItemRegister;
 import io.github.burritobandit28.notatoy.items.RadioactiveFunGoop;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.type.ConsumableComponent;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageSources;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.passive.PandaEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.registry.*;
+import net.minecraft.registry.tag.EntityTypeTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
@@ -55,13 +61,7 @@ public class ConsumableComponentMixin {
         @Override
         public boolean shouldDamage(Explosion explosion, Entity entity) {
 
-            if (entity instanceof ItemEntity) {
-                return false;
-            }
-            else {
-
-                return true;
-            }
+            return !entity.getType().isIn(NotAToy.GOOP_IGNORED);
         }
 
 

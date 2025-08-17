@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "eat_goop": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "notatoy:radioactive_fun_goop"
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "background": "notatoy:gui/advancements/background",
+    "announce_to_chat": true,
+    "title": {
+      "translate": "advancement.notatoy.fungoop"
+    },
+    "description": {
+      "translate": "advancement.notatoy.fungoop.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "notatoy:radioactive_fun_goop"
+    },
+    "show_toast": true
+  },
+  "requirements": [
+    [
+      "eat_goop"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -5,6 +5,8 @@
   "item.notatoy.radioactive_fun_goop" : "Radioactive Fun Goop",
   "block.notatoy.waste" : "Waste",
   "item.notatoy.waste" : "Waste",
-  "itemGroup.notatoy" : "Not A Toy"
+  "itemGroup.notatoy" : "Not A Toy",
+  "advancement.notatoy.fungoop" : "You're not meant to eat that...",
+  "advancement.notatoy.fungoop.description" : "Eat some Radioactive Fun Goo!"
 
 }

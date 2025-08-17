@@ -1,5 +1,6 @@
 package io.github.burritobandit28.notatoy.mixin;
 
+import io.github.burritobandit28.notatoy.NotAToy;
 import io.github.burritobandit28.notatoy.TemporaryShowcaseCommands;
 import io.github.burritobandit28.notatoy.accessors.EnableDisableRadiation;
 import io.github.burritobandit28.notatoy.accessors.isSourcePresentAccessor;
@@ -74,13 +75,11 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
 
         }
 
-        if (TemporaryShowcaseCommands.radiation_opt_in.getOrDefault(this.getUuid(), false) || !this.isPlayer()) {
+        if (TemporaryShowcaseCommands.radiation_opt_in.getOrDefault(this.getUuid(), false) || (!this.isPlayer()&&!this.getType().isIn(NotAToy.RADIATION_IGNORED))) {
             this.tickSources();
 
 
-            //System.out.println(this.isSourcePresent());
             if (this.isSourcePresent() && !world.isClient) {
-                // 1 in say 200 chance deal damage to entity
                 int sources = this.blockSources.size() + (this.entitySources.size());
                 if (sources > 7 || this.entitySources.size() > 2) {
                     this.addStatusEffect(new StatusEffectInstance(RadiationSicknessEffect.RADIATION_SICKNESS, 18005));
@@ -94,9 +93,6 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
                 if (Math.random() < value) {
                     this.damage((ServerWorld) world, RadiationSicknessEffect.getRadiationDamageSource((ServerWorld) world), 1);
                 }
-
-
-                //TODO - remember to clear sources and recalculate every so often - also clear when changing dimension
             }
         }
     }
