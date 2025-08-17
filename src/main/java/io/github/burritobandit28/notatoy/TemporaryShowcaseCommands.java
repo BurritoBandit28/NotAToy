@@ -7,6 +7,7 @@ import io.github.burritobandit28.notatoy.accessors.EnableDisableRadiation;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 
 import java.util.HashMap;
@@ -27,6 +28,11 @@ public class TemporaryShowcaseCommands {
         CommandRegistrationCallback.EVENT.register(((dispatcher, registryAccess, environment) -> {
 
             dispatcher.register(literal("set_radiation")
+                            .executes((ctx) -> {
+                                ServerCommandSource source = ctx.getSource();
+                                source.sendFeedback(() -> Text.literal(String.format("Radiation for %s is currently set to %s", source.getEntity().getName().getString(), radiation_opt_in.getOrDefault(source.getEntity().getUuid(), false))), false);
+                                return 1;
+                            })
                     .then(argument("value", BoolArgumentType.bool())
                             .executes((ctx)->{
                                 Entity entity = ctx.getSource().getEntity();
