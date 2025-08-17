@@ -18,4 +18,6 @@ public interface isSourcePresentAccessor {
 
     void addEntitySource(UUID entityUUID);
 
+    boolean hasEntitySource(UUID entityUUID);
+
 }

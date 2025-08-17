@@ -10,10 +10,13 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageTypes;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -40,6 +43,9 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
     @Shadow
     public abstract boolean addStatusEffect(StatusEffectInstance effect);
 
+    @Shadow
+    public abstract boolean hasStatusEffect(RegistryEntry<StatusEffect> effect);
+
     private List<Pair<BlockPos,Integer>> blockSources = new ArrayList<>();
     private List<Pair<UUID,Integer>> entitySources = new ArrayList<>(); // I never finished adding this
 
@@ -54,22 +60,39 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
     @Inject(at = @At("TAIL"), method = "baseTick")
     private void doRadiation(CallbackInfo ci) {
 
+        World world = this.getWorld();
+
+        if (this.hasStatusEffect(RadiationSicknessEffect.RADIATION_SICKNESS) && !world.isClient) {
+            BlockPos pos = this.getBlockPos();
+            Box area = new Box(pos).stretch(10.0,10.0,10.0);
+            List<LivingEntity> entities = world.getNonSpectatingEntities(LivingEntity.class, area);
+            for(LivingEntity entity : entities ) {
+                if (!((isSourcePresentAccessor)entity).hasEntitySource(this.getUuid())) {
+                    ((isSourcePresentAccessor)entity).addEntitySource(this.getUuid());
+                }
+            }
+
+        }
+
         if (TemporaryShowcaseCommands.radiation_opt_in.getOrDefault(this.getUuid(), false) || !this.isPlayer()) {
             this.tickSources();
 
 
             //System.out.println(this.isSourcePresent());
-            if (this.isSourcePresent() && !this.getWorld().isClient) {
+            if (this.isSourcePresent() && !world.isClient) {
                 // 1 in say 200 chance deal damage to entity
-                int sources = this.blockSources.size() + this.entitySources.size();
-                if (sources > 7) {
+                int sources = this.blockSources.size() + (this.entitySources.size());
+                if (sources > 7 || this.entitySources.size() > 2) {
                     this.addStatusEffect(new StatusEffectInstance(RadiationSicknessEffect.RADIATION_SICKNESS, 18005));
+                    if (!this.hasEntitySource(this.getUuid())) {
+                        this.addEntitySource(this.getUuid());
+                    }
                 }
 
                 double value = (-Math.exp(-(sources / 1500.0)) + 1);
 
                 if (Math.random() < value) {
-                    this.damage((ServerWorld) this.getWorld(), RadiationSicknessEffect.getRadiationDamageSource((ServerWorld) this.getWorld()), 1);
+                    this.damage((ServerWorld) world, RadiationSicknessEffect.getRadiationDamageSource((ServerWorld) world), 1);
                 }
 
 
@@ -80,11 +103,18 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
 
     @Unique
     private void tickSources() {
+
+        List<Pair<BlockPos,Integer>> blockToRemove = new ArrayList<>();
+        List<Pair<UUID,Integer>> entityToRemove = new ArrayList<>();
+
         if (!this.getWorld().isClient) {
             for (Pair<BlockPos, Integer> blockSource : this.blockSources) {
-                if (blockSource.getRight() > 1200) {
-                    if ((!blockSource.getLeft().isWithinDistance(this.getPos(), 100.0))&&this.getWorld().getBlockState(blockSource.getLeft()).getBlock() instanceof RadioactiveBlock) {
-                        this.blockSources.remove(blockSource);
+                if (blockSource.getRight() > 600) {
+                    if ((!blockSource.getLeft().isWithinDistance(this.getPos(), 60.0))||!(this.getWorld().getBlockState(blockSource.getLeft()).getBlock() instanceof RadioactiveBlock)) {
+                        blockToRemove.add(blockSource);
+                    }
+                    else {
+                        blockSource.setRight(0);
                     }
                 } else {
                     Integer last = blockSource.getRight();
@@ -92,16 +122,29 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
                 }
             }
             for (Pair<UUID, Integer> entitySource : this.entitySources) {
-                if (entitySource.getRight() > 1200) {
-                    Entity entity = this.getWorld().getEntity(entitySource.getLeft());
-                    if (!entity.getBlockPos().isWithinDistance(this.getPos(), 100.0)) {
-                        this.blockSources.remove(entitySource);
+                if (entitySource.getRight() > 600) {
+                    LivingEntity entity = (LivingEntity) this.getWorld().getEntity(entitySource.getLeft());
+
+                    if (entity==null||!entity.getBlockPos().isWithinDistance(this.getPos(), 60.0) || !entity.hasStatusEffect(RadiationSicknessEffect.RADIATION_SICKNESS) || !entity.isAlive()) {
+                        entityToRemove.add(entitySource);
+                    }
+                    else {
+                        entitySource.setRight(0);
                     }
                 } else {
                     Integer last = entitySource.getRight();
                     entitySource.setRight(last + 1);
                 }
             }
+
+            // not proud of this tbh but hey it works and its like only ever gonna be a list of one
+            for (Pair<BlockPos,Integer> entry : blockToRemove) {
+                this.blockSources.remove(entry);
+            }
+            for (Pair<UUID,Integer> entry : entityToRemove) {
+                this.entitySources.remove(entry);
+            }
+
         }
     }
 
@@ -135,4 +178,15 @@ public abstract class LivingEntityMixin extends Entity implements isSourcePresen
             this.entitySources.add(new Pair<>(entityUUID, 0));
         }
     }
+
+    @Override
+    public boolean hasEntitySource(UUID entityUUID) {
+        for (Pair<UUID, Integer> entry : this.entitySources) {
+            if (entry.getLeft()==entityUUID) {
+                return true;
+            }
+        }
+        return false;
+    };
+
 }
