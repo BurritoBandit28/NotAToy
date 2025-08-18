@@ -22,7 +22,7 @@ public class EarlyRiser implements Runnable {
         MappingResolver remapper = FabricLoader.getInstance().getMappingResolver();
 
         // add to noteblock enum
-        NotAToy.LOGGER.info("Hey from early riser lol");
+        // NotAToy.LOGGER.info("Hey from early riser lol"); <- this fucked everything up
 
         String noteBlockInstrument = remapper.mapClassName("intermediary", "net.minecraft.class_2766");
         String registryEntry = "L" + remapper.mapClassName("intermediary", "net.minecraft.class_6880") + ";";
