@@ -8,6 +8,7 @@
   "itemGroup.notatoy" : "Not A Toy",
   "advancement.notatoy.fungoop" : "You're not meant to eat that...",
   "advancement.notatoy.fungoop.description" : "Eat some Radioactive Fun Goo!",
-  "item.more_than_a_foxbox.plushie.notatoy.radioactive_fun_goop": "Radioactive Fun Goop Plushie"
+  "item.more_than_a_foxbox.plushie.notatoy.radioactive_fun_goop": "Radioactive Fun Goop Plushie",
+  "effect.notatoy.radiation_sickness": "Radiation Sickness"
 
 }
