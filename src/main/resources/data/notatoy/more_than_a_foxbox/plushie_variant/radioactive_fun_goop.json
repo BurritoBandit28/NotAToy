@@ -1,0 +1,9 @@
+{
+	"mob_sounds": "block.slime_block.break",
+	"poses": {
+		"sit": "notatoy:more_than_a_foxbox/radioactive_fun_goop/sit",
+		"stand": "notatoy:more_than_a_foxbox/radioactive_fun_goop/stand",
+		"lay": "notatoy:more_than_a_foxbox/radioactive_fun_goop/lay",
+		"box": "notatoy:more_than_a_foxbox/radioactive_fun_goop/box"
+    }
+}

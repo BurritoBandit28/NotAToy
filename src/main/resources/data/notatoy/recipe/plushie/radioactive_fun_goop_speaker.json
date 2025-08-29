@@ -1,0 +1,18 @@
+{
+  "type": "more_than_a_foxbox:sewing",
+
+  "shell": "minecraft:slime_block",
+  "filler": "#more_than_a_foxbox:polyfill",
+  "essence": "notatoy:radioactive_fun_goop",
+  "upgrade": "more_than_a_foxbox:speaker",
+
+  "result": {
+    "id": "more_than_a_foxbox:plushie",
+    "components": {
+      "more_than_a_foxbox:plushie": {
+        "variant": "notatoy:radioactive_fun_goop",
+        "sound_type": "speaker"
+      }
+    }
+  }
+}
