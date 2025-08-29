@@ -31,5 +31,8 @@
       "eat_goop"
     ]
   ],
+  "rewards": {
+    "function": "notatoy:grantshard"
+  },
   "sends_telemetry_event": true
 }
