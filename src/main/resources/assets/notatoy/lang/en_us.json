@@ -1,13 +1,17 @@
 {
 
   "death.attack.radiation_damage": "%1$s became too irradiated",
+  "death.attack.radiation_damage.player": "%1$s became too irradiated while fighting %2$s",
+  "death.attack.radiation_damage.item": "%1$s became too irradiated while fighting %2$s using %3$s",
   "death.attack.ate_goop": "%1$s ate some Radioactive Fun Goop",
+  "death.attack.ate_goop.player" : "%1$s was scared into eating Radioactive Fun Goop by %2$s",
+  "death.attack.ate_goop.item" : "%1$s was scared into eating Radioactive Fun Goop by %2$s using %3$s",
   "item.notatoy.radioactive_fun_goop" : "Radioactive Fun Goop",
   "block.notatoy.waste" : "Waste",
   "item.notatoy.waste" : "Waste",
   "itemGroup.notatoy" : "Not A Toy",
   "advancement.notatoy.fungoop" : "You're not meant to eat that...",
-  "advancement.notatoy.fungoop.description" : "Eat some Radioactive Fun Goo!",
+  "advancement.notatoy.fungoop.description" : "Eat some Radioactive Fun Goop!",
   "item.more_than_a_foxbox.plushie.notatoy.radioactive_fun_goop": "Radioactive Fun Goop Plushie",
   "effect.notatoy.radiation_sickness": "Radiation Sickness"
 
