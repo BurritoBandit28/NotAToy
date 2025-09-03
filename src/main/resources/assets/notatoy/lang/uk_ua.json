@@ -13,7 +13,7 @@
   "advancement.notatoy.fungoop" : "Тобі не призначено це їсти…",
   "advancement.notatoy.fungoop.description" : "З'їжте радіоактивне щось!",
   "item.more_than_a_foxbox.plushie.notatoy.radioactive_fun_goop": "Іграшка радіоактивного щось",
-  "effect.notatoy.radiation_sickness": "Опромінення"
+  "effect.notatoy.radiation_sickness": "Опромінення",
   "modmenu.descriptionTranslation.notatoy": "Додає речі, які ТОЧНО не є іграшками"
 
 }

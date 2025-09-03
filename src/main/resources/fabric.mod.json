@@ -5,9 +5,11 @@
 	"name": "Not a Toy",
 	"description": "Adds things that are DEFINITELY not toys.",
 	"authors": [
-		"BurritoBandit28",
-        "StarmanMine142 (Ukrainian translations)"
+		"BurritoBandit28"
 	],
+    "contributors" : [
+      "StarmanMine142 (Ukrainian translations)"
+    ],
 	"contact": {
 		"homepage": "https://burritobandit28.github.io/",
 		"sources": "https://github.com/BurritoBandit28/NotAToy"
