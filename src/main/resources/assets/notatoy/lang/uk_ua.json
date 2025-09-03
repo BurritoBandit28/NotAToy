@@ -1,0 +1,19 @@
+{
+
+  "death.attack.radiation_damage": "%1$s занадто сильно опромінився",
+   "death.attack.radiation_damage.player": "%1$s занадто сильно опромінився під час битви з %2$s",
+  "death.attack.radiation_damage.item": "%1$s занадто сильно опромінився під час битви з %2$s за допомогою: %3$s",
+  "death.attack.ate_goop": "%1$s з'їв радіоактивне щось",
+  "death.attack.ate_goop.player" : "%1$s злякався з'їсти радіоктивне щось від %2$s",
+  "death.attack.ate_goop.item" : "%1$s злякався з'їсти радіоктивне щось від %2$s за допомогою: %3$s",
+  "item.notatoy.radioactive_fun_goop" : "Радіоактивне щось",
+  "block.notatoy.waste" : "Радіоактивні відходи",
+  "item.notatoy.waste" : "Радіоактивні відходи",
+  "itemGroup.notatoy" : "Not A Toy",
+  "advancement.notatoy.fungoop" : "Тобі не призначено це їсти…",
+  "advancement.notatoy.fungoop.description" : "З'їжте радіоактивне щось!",
+  "item.more_than_a_foxbox.plushie.notatoy.radioactive_fun_goop": "Іграшка радіоактивного щось",
+  "effect.notatoy.radiation_sickness": "Опромінення"
+  "modmenu.descriptionTranslation.notatoy": "Додає речі, які ТОЧНО не є іграшками"
+
+}
