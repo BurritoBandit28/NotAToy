@@ -1,0 +1,18 @@
+{
+
+  "death.attack.radiation_damage": "%1$s became too iwadiwated",
+  "death.attack.radiation_damage.player": "%1$s became too iwadiwated whil scwatching %2$s",
+  "death.attack.radiation_damage.item": "%1$s became too iwadiwated whil scwatching %2$s wit %3$s",
+  "death.attack.ate_goop": "%1$s ate sum Wadioactive Fun Goop",
+  "death.attack.ate_goop.player" : "%1$s was scware intu eat Wadioactive Fun Goop by %2$s",
+  "death.attack.ate_goop.item" : "%1$s was scware intu eat Wadioactive Fun Goop by %2$s wit %3$s",
+  "item.notatoy.radioactive_fun_goop" : "Wadioactive Fun Goop",
+  "block.notatoy.waste" : "Wazte",
+  "item.notatoy.waste" : "Wazte",
+  "itemGroup.notatoy" : "Vewwy much a toy",
+  "advancement.notatoy.fungoop" : "Dat wil mak ur tummy funny...",
+  "advancement.notatoy.fungoop.description" : "Eat sum Wadioactive Fun Goop!",
+  "item.more_than_a_foxbox.plushie.notatoy.radioactive_fun_goop": "Wadioactive Fun Goop Pwushie",
+  "effect.notatoy.radiation_sickness": "Wadiation Sickie"
+
+}
